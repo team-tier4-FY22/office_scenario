@@ -12,27 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "office_100_laps/office_100_laps.hpp"
+#include "office_scenario/office_scenario.hpp"
 
-#include <cmath>
+#include <rclcpp/rclcpp.hpp>
+
 #include <memory>
-#include <string>
 
-OPfficeScenario::OPfficeScenario()
-: Node("office_100_laps"),
-  output_frame_(declare_parameter("base_link", "base_link")),
-  message_timeout_sec_(declare_parameter("message_timeout_sec", 0.2))
+int main(int argc, char ** argv)
 {
-}
+  rclcpp::init(argc, argv);
+  auto node = std::make_shared<OfficeScenario>();
+  rclcpp::spin(node);
+  rclcpp::shutdown();
 
-OPfficeScenario::~OPfficeScenario() {}
-
-void OPfficeScenario::callbackOdometry(
-  const nav_msgs::msg::Odometry::ConstSharedPtr odom_msg_ptr)
-{
-    
-}
-
-void OPfficeScenario::timerCallback()
-{
+  return 0;
 }
