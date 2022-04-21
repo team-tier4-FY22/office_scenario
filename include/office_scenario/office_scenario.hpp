@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef OFFICE_100_LAPS__OFFICE_100_LAPS_CORE_HPP_
-#define OFFICE_100_LAPS__OFFICE_100_LAPS_CORE_HPP_
+#ifndef OFFICE_SCENARIO__OFFICE_SCENARIO_CORE_HPP_
+#define OFFICE_SCENARIO__OFFICE_SCENARIO_CORE_HPP_
 
 #include <rclcpp/rclcpp.hpp>
 
@@ -23,11 +23,11 @@
 #include <nav_msgs/msg/odometry.hpp>
 #include <string>
 
-class Office100Laps : public rclcpp::Node
+class OfficeScenario : public rclcpp::Node
 {
 public:
-  Office100Laps();
-  ~Office100Laps();
+  OfficeScenario();
+  ~OfficeScenario();
 
 private:
   void callbackOdometry(const nav_msgs::msg::Odometry::ConstSharedPtr odom_msg_ptr);
@@ -45,4 +45,4 @@ private:
   nav_msgs::msg::Odometry::ConstSharedPtr odom_msg_ptr_;
 };
 
-#endif  // OFFICE_100_LAPS__OFFICE_100_LAPS_CORE_HPP_
+#endif  // OFFICE_SCENARIO__OFFICE_SCENARIO_CORE_HPP_

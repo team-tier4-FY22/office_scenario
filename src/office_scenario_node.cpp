@@ -14,19 +14,25 @@
 
 #include "office_100_laps/office_100_laps.hpp"
 
-#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
-
 #include <cmath>
 #include <memory>
 #include <string>
 
-Office100Laps::Office100Laps()
+OPfficeScenario::OPfficeScenario()
 : Node("office_100_laps"),
-  tf_buffer_(this->get_clock()),
-  tf_listener_(tf_buffer_),
   output_frame_(declare_parameter("base_link", "base_link")),
   message_timeout_sec_(declare_parameter("message_timeout_sec", 0.2))
 {
 }
 
-Office100Laps::~Office100Laps() {}
+OPfficeScenario::~OPfficeScenario() {}
+
+void OPfficeScenario::callbackOdometry(
+  const nav_msgs::msg::Odometry::ConstSharedPtr odom_msg_ptr)
+{
+    
+}
+
+void OPfficeScenario::timerCallback()
+{
+}

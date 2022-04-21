@@ -12,27 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "office_100_laps/office_100_laps.hpp"
+#include "office_scenario/office_scenario.hpp"
+
+#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
 #include <cmath>
 #include <memory>
 #include <string>
 
-OPffice100Laps::OPffice100Laps()
-: Node("office_100_laps"),
+OfficeScenario::OfficeScenario()
+: Node("office_scenario"),
+  tf_buffer_(this->get_clock()),
+  tf_listener_(tf_buffer_),
   output_frame_(declare_parameter("base_link", "base_link")),
   message_timeout_sec_(declare_parameter("message_timeout_sec", 0.2))
 {
 }
 
-OPffice100Laps::~OPffice100Laps() {}
-
-void OPffice100Laps::callbackOdometry(
-  const nav_msgs::msg::Odometry::ConstSharedPtr odom_msg_ptr)
-{
-    
-}
-
-void OPffice100Laps::timerCallback()
-{
-}
+OfficeScenario::~OfficeScenario() {}
