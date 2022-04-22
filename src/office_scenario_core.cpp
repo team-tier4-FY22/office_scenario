@@ -23,6 +23,9 @@ OfficeScenario::OfficeScenario()
 {
   goal_tolerance_ = 2.0;
 	timer_dt_ = 0.1;
+	going_to_point_a_ = true;
+	lap_num_ = 0;
+
   goal_pose_pub_ = create_publisher<geometry_msgs::msg::PoseStamped>("out_goal_pose", rclcpp::QoS{10});
   engage_pub_ = create_publisher<autoware_auto_vehicle_msgs::msg::Engage>("out_engage", rclcpp::QoS{10});
   vel_lim_pub_ = create_publisher<tier4_planning_msgs::msg::VelocityLimit>("out_velocity_limit", rclcpp::QoS{10});
@@ -106,6 +109,8 @@ void OfficeScenario::timerCallback()
 
 		// publish goal
 		geometry_msgs::msg::PoseStamped goal_pose_msg;
+		goal_pose_msg.header.stamp = this->now();
+		goal_pose_msg.header.frame_id = "map";
 		if (going_to_point_a_) {
 			std::cout << "next goal: point a" << std::endl;
 
@@ -123,10 +128,13 @@ void OfficeScenario::timerCallback()
 		}
 		goal_pose_pub_->publish(goal_pose_msg);
 
+    rclcpp::sleep_for(std::chrono::milliseconds(1000));
 		// publish engage
 		autoware_auto_vehicle_msgs::msg::Engage engage_msg;
 		engage_msg.engage = true;
 		engage_pub_->publish(engage_msg);
+
+		++lap_num_;
 
 	} else { // not reached to the current goal yet
 		return;

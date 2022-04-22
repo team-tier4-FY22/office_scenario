@@ -53,6 +53,7 @@ private:
   double goal_tolerance_;
   bool going_to_point_a_;
   double timer_dt_;
+  int lap_num_;
 };
 
 #endif  // OFFICE_SCENARIO__OFFICE_SCENARIO_CORE_HPP_
