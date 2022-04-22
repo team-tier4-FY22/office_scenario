@@ -1,0 +1,13 @@
+<launch>
+  <arg name="output_goal_pose" default="/planning/mission_planning/goal" description=""/>
+  <arg name="output_engage" default="/autoware/engage" description=""/>
+  <arg name="output_velocity_limit" default="/planning/scenario_planning/max_velocity_default" description=""/>
+  <arg name="input_odom" default="/localization/kinematic_state" description=""/>
+
+  <node pkg="office_scenario" exec="office_scenario" name="office_scenario" output="screen">
+    <remap from="out_goal_pose" to="$(var output_goal_pose)"/>
+    <remap from="out_engage" to="$(var output_engage)"/>
+    <remap from="out_velocity_limit" to="$(var output_velocity_limit)"/>
+    <remap from="in_odom" to="$(var input_odom)"/>
+  </node>
+</launch>

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "office_scenario/office_scenario.hpp"
+#include "office_scenario/office_scenario_core.hpp"
 
 #include <rclcpp/rclcpp.hpp>
 

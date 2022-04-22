@@ -38,18 +38,21 @@ private:
   rclcpp::Publisher<autoware_auto_vehicle_msgs::msg::Engage>::SharedPtr
     engage_pub_;
   rclcpp::Publisher<tier4_planning_msgs::msg::VelocityLimit>::SharedPtr
-    vel_limit_pub_;
+    vel_lim_pub_;
+  rclcpp::TimerBase::SharedPtr timer_control_;
 
   rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_sub_;
 
   nav_msgs::msg::Odometry::ConstSharedPtr odom_msg_ptr_;
 
-  geometry_msgs::msg::Pose::ConstSharedPtr point_a_pose_ptr_;
-  geometry_msgs::msg::Pose::ConstSharedPtr point_b_pose_ptr_;
-  geometry_msgs::msg::Pose::ConstSharedPtr current_goal_ptr_;
+  // geometry_msgs::msg::Pose::ConstSharedPtr point_a_pose_ptr_;
+  // geometry_msgs::msg::Pose::ConstSharedPtr point_b_pose_ptr_;
+  double goal_a_px_, goal_a_py_, goal_b_px_, goal_b_py_;
+  double goal_a_qz_, goal_a_qw_, goal_b_qz_, goal_b_qw_;
 
   double goal_tolerance_;
   bool going_to_point_a_;
+  double timer_dt_;
 };
 
 #endif  // OFFICE_SCENARIO__OFFICE_SCENARIO_CORE_HPP_
