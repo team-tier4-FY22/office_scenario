@@ -43,6 +43,13 @@ private:
   rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_sub_;
 
   nav_msgs::msg::Odometry::ConstSharedPtr odom_msg_ptr_;
+
+  geometry_msgs::msg::Pose::ConstSharedPtr point_a_pose_ptr_;
+  geometry_msgs::msg::Pose::ConstSharedPtr point_b_pose_ptr_;
+  geometry_msgs::msg::Pose::ConstSharedPtr current_goal_ptr_;
+
+  double goal_tolerance_;
+  bool going_to_point_a_;
 };
 
 #endif  // OFFICE_SCENARIO__OFFICE_SCENARIO_CORE_HPP_
