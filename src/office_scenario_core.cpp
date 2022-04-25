@@ -22,9 +22,9 @@ OfficeScenario::OfficeScenario()
 : Node("office_scenario")
 {
   goal_tolerance_ = 2.0;
-	timer_dt_ = 0.1;
-	going_to_point_a_ = true;
-	lap_num_ = 0;
+  timer_dt_ = 0.1;
+  going_to_point_a_ = true;
+  lap_num_ = 0;
 
   goal_pose_pub_ = create_publisher<geometry_msgs::msg::PoseStamped>("out_goal_pose", rclcpp::QoS{10});
   engage_pub_ = create_publisher<autoware_auto_vehicle_msgs::msg::Engage>("out_engage", rclcpp::QoS{10});
