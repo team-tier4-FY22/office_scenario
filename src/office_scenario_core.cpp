@@ -136,7 +136,7 @@ void OfficeScenario::timerCallback()
 
 		if (going_to_point_a_){
 			++lap_num_;
-			std::cout << "Current lap: " << lap_num << std::endl;
+			std::cout << "Current lap: " << lap_num_ << std::endl;
 		}
 	} else { // not reached to the current goal yet
 		return;
